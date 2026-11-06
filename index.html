@@ -1,0 +1,777 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="BY RAPHAËL - Boutique de mode hommes et femmes">
+<title>BY RAPHAËL | Boutique de mode</title>
+
+<style>
+:root {
+  --dark:#151b2b;
+  --gold:#c49a50;
+  --cream:#faf8f3;
+  --muted:#687386;
+  --line:#e8e5de;
+}
+
+* {box-sizing:border-box}
+
+body {
+  margin:0;
+  font-family:Arial,sans-serif;
+  color:var(--dark);
+}
+
+a {text-decoration:none;color:inherit}
+
+button,input,select {font:inherit;cursor:pointer}
+
+.announce {
+  background:var(--dark);
+  color:white;
+  text-align:center;
+  padding:10px;
+  font-size:12px;
+  letter-spacing:1px;
+}
+
+header {
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:white;
+  border-bottom:1px solid var(--line);
+}
+
+.nav {
+  max-width:1180px;
+  margin:auto;
+  padding:15px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.logo {
+  font:bold 25px Georgia,serif;
+  letter-spacing:2px;
+}
+
+.logo span {color:var(--gold)}
+
+nav {
+  display:flex;
+  gap:22px;
+  font-size:13px;
+  font-weight:bold;
+}
+
+.cart {
+  background:var(--dark);
+  color:white;
+  border:0;
+  border-radius:30px;
+  padding:12px 17px;
+  font-weight:bold;
+}
+
+.hero {
+  min-height:440px;
+  background:
+  linear-gradient(90deg,rgba(15,20,32,.9),rgba(15,20,32,.35)),
+  url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1600&q=85')
+  center/cover;
+  display:flex;
+  align-items:center;
+  color:white;
+}
+
+.heroText {
+  max-width:1180px;
+  width:100%;
+  margin:auto;
+  padding:55px 22px;
+}
+
+.kicker {
+  color:#e7c98f;
+  text-transform:uppercase;
+  letter-spacing:3px;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.hero h1 {
+  font:clamp(40px,7vw,66px)/1.05 Georgia,serif;
+  max-width:650px;
+  margin:17px 0;
+}
+
+.hero p {
+  max-width:520px;
+  line-height:1.7;
+  color:#eee;
+}
+
+.goldBtn {
+  display:inline-block;
+  background:var(--gold);
+  color:#111;
+  padding:14px 22px;
+  border:0;
+  border-radius:4px;
+  font-weight:bold;
+  margin-top:12px;
+}
+
+.wrap {
+  max-width:1180px;
+  margin:auto;
+  padding:55px 20px;
+}
+
+.heading {
+  text-align:center;
+  margin-bottom:28px;
+}
+
+.heading small {
+  color:var(--gold);
+  font-weight:bold;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.heading h2 {
+  font:36px Georgia,serif;
+  margin:9px 0;
+}
+
+.heading p {
+  color:var(--muted);
+  font-size:14px;
+}
+
+.categories {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.cat {
+  height:190px;
+  position:relative;
+  overflow:hidden;
+  border-radius:6px;
+  color:white;
+}
+
+.cat img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.cat:after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(transparent,rgba(0,0,0,.7));
+}
+
+.cat b {
+  position:absolute;
+  z-index:1;
+  bottom:17px;
+  left:17px;
+  font:23px Georgia,serif;
+}
+
+.shopTools {
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+  margin:25px 0;
+}
+
+.filters {
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+}
+
+.filter {
+  background:white;
+  border:1px solid var(--line);
+  padding:9px 13px;
+  border-radius:30px;
+  font-size:12px;
+}
+
+.filter.active {
+  background:var(--dark);
+  color:white;
+}
+
+.tools {
+  display:flex;
+  gap:8px;
+}
+
+.tools input,.tools select {
+  padding:10px;
+  border:1px solid var(--line);
+  border-radius:4px;
+  max-width:170px;
+}
+
+.products {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.card {
+  border:1px solid var(--line);
+  border-radius:6px;
+  overflow:hidden;
+  background:white;
+}
+
+.photo {
+  height:220px;
+  background:var(--cream);
+}
+
+.photo img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.info {padding:13px}
+
+.type {
+  font-size:10px;
+  color:var(--gold);
+  font-weight:bold;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.name {
+  font-weight:bold;
+  margin:7px 0;
+}
+
+.desc {
+  font-size:12px;
+  color:var(--muted);
+  min-height:30px;
+}
+
+.bottom {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:7px;
+  margin-top:12px;
+}
+
+.price {font-weight:bold}
+
+.add {
+  background:var(--dark);
+  color:white;
+  border:0;
+  padding:9px 11px;
+  border-radius:4px;
+  font-size:12px;
+}
+
+.about {
+  background:var(--cream);
+  text-align:center;
+  padding:45px 20px;
+}
+
+.about p {
+  max-width:680px;
+  margin:12px auto;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+footer {
+  background:var(--dark);
+  color:white;
+  text-align:center;
+  padding:30px 15px;
+  font-size:13px;
+}
+
+footer span {color:#e7c98f}
+
+.drawerBg {
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#0008;
+  z-index:30;
+}
+
+.drawerBg.show {display:block}
+
+.drawer {
+  position:absolute;
+  right:0;
+  top:0;
+  height:100%;
+  width:min(430px,100%);
+  background:white;
+  padding:22px;
+  overflow:auto;
+}
+
+.drawerHead {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid var(--line);
+  padding-bottom:12px;
+}
+
+.close {
+  background:none;
+  border:0;
+  font-size:25px;
+}
+
+.cartLine {
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  padding:13px 0;
+  border-bottom:1px solid var(--line);
+  font-size:13px;
+}
+
+.qty button {
+  border:1px solid var(--line);
+  background:white;
+  padding:3px 8px;
+}
+
+.total {
+  display:flex;
+  justify-content:space-between;
+  font-weight:bold;
+  font-size:18px;
+  margin:20px 0;
+}
+
+.checkout {
+  width:100%;
+  background:#16834b;
+  color:white;
+  border:0;
+  border-radius:4px;
+  padding:14px;
+  font-weight:bold;
+}
+
+.empty {
+  color:var(--muted);
+  text-align:center;
+  padding:30px 0;
+}
+
+@media(max-width:800px) {
+  nav {display:none}
+  .categories {grid-template-columns:repeat(2,1fr)}
+  .products {
+    grid-template-columns:repeat(2,1fr);
+    gap:11px;
+  }
+  .photo {height:175px}
+  .wrap {padding:40px 13px}
+  .nav {padding:13px}
+  .hero {min-height:390px}
+}
+
+@media(max-width:390px) {
+  .photo {height:145px}
+  .name {font-size:13px}
+  .price {font-size:13px}
+  .add {padding:8px;font-size:11px}
+  .tools input {width:135px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="announce">
+✨ BIENVENUE CHEZ BY RAPHAËL — STYLE & ÉLÉGANCE POUR TOUS
+</div>
+
+<header>
+<div class="nav">
+<a class="logo" href="#">BY <span>RAPHAËL</span></a>
+
+<nav>
+<a href="#accueil">Accueil</a>
+<a href="#categories">Catégories</a>
+<a href="#boutique">Boutique</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<button class="cart" onclick="openCart()">
+Panier <span id="count">0</span>
+</button>
+</div>
+</header>
+
+<section class="hero" id="accueil">
+<div class="heroText">
+<div class="kicker">La mode, avec distinction</div>
+
+<h1>Révélez votre style.</h1>
+
+<p>
+Découvrez notre sélection de bracelets, montres,
+chaussures, vêtements et accessoires pour hommes
+et femmes. Trouvez votre prochaine pièce préférée
+chez BY RAPHAËL.
+</p>
+
+<a class="goldBtn" href="#boutique">
+DÉCOUVRIR LA BOUTIQUE
+</a>
+</div>
+</section>
+
+<section class="wrap" id="categories">
+
+<div class="heading">
+<small>Nos univers</small>
+<h2>Explorez nos catégories</h2>
+<p>Des articles sélectionnés pour compléter votre style.</p>
+</div>
+
+<div class="categories">
+
+<a class="cat" href="#boutique" onclick="setFilter('Bracelets')">
+<img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=600&q=80" alt="Bracelets">
+<b>Bracelets</b>
+</a>
+
+<a class="cat" href="#boutique" onclick="setFilter('Montres')">
+<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" alt="Montres">
+<b>Montres</b>
+</a>
+
+<a class="cat" href="#boutique" onclick="setFilter('Chaussures')">
+<img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=600&q=80" alt="Chaussures">
+<b>Chaussures</b>
+</a>
+
+<a class="cat" href="#boutique" onclick="setFilter('Vêtements')">
+<img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=600&q=80" alt="Vêtements">
+<b>Vêtements</b>
+</a>
+
+</div>
+</section>
+
+<section class="wrap" id="boutique">
+
+<div class="heading">
+<small>Notre sélection</small>
+<h2>La boutique BY RAPHAËL</h2>
+<p>
+Ajoutez vos articles au panier puis envoyez
+votre commande sur WhatsApp.
+</p>
+</div>
+
+<div class="shopTools">
+<div class="filters" id="filters"></div>
+
+<div class="tools">
+<input id="search" type="search"
+placeholder="Rechercher..."
+oninput="renderProducts()">
+
+<select id="sort" onchange="renderProducts()">
+<option value="default">Trier par</option>
+<option value="low">Prix croissant</option>
+<option value="high">Prix décroissant</option>
+</select>
+</div>
+</div>
+
+<div class="products" id="products"></div>
+
+</section>
+
+<section class="about">
+<div class="kicker">BY RAPHAËL</div>
+<h2>Votre style, notre passion.</h2>
+
+<p>
+Une boutique dédiée aux hommes et aux femmes
+qui aiment associer élégance, qualité et personnalité.
+Parcourez nos collections et contactez-nous pour commander.
+</p>
+</section>
+
+<footer id="contact">
+
+<div class="logo">BY <span>RAPHAËL</span></div>
+
+<p>
+Commandes et renseignements :
+<span>+257 77 39 44 33</span>
+</p>
+
+<p>© 2026 BY RAPHAËL — Tous droits réservés.</p>
+
+</footer>
+
+<div class="drawerBg" id="drawer"
+onclick="if(event.target===this)closeCart()">
+
+<div class="drawer">
+
+<div class="drawerHead">
+<h2>Votre panier</h2>
+<button class="close" onclick="closeCart()">×</button>
+</div>
+
+<div id="cartItems"></div>
+
+<div class="total">
+<span>Total estimé</span>
+<span id="total">0 FBU</span>
+</div>
+
+<p style="font-size:12px;color:#687386">
+Les prix affichés sont des exemples modifiables.
+Confirmez le prix et la disponibilité avec le vendeur.
+</p>
+
+<button class="checkout" onclick="checkout()">
+Commander sur WhatsApp
+</button>
+
+</div>
+</div>
+
+<script>
+
+const whatsappNumber = "25777394433";
+
+const productsData = [
+
+{id:1,name:"Bracelet Élégance dorée",category:"Bracelets",price:18000,desc:"Bracelet raffiné pour toutes les occasions.",img:"https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=700&q=80"},
+
+{id:2,name:"Bracelet Perles classique",category:"Bracelets",price:15000,desc:"Un accessoire discret et élégant.",img:"https://images.unsplash.com/photo-1573408301185-9146fe634ad0?auto=format&fit=crop&w=700&q=80"},
+
+{id:3,name:"Bracelet Homme moderne",category:"Bracelets",price:20000,desc:"Style moderne pour homme.",img:"https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=700&q=80"},
+
+{id:4,name:"Montre Élégance",category:"Montres",price:65000,desc:"Une montre au design intemporel.",img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80"},
+
+{id:5,name:"Montre classique",category:"Montres",price:55000,desc:"Un look soigné au quotidien.",img:"https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=700&q=80"},
+
+{id:6,name:"Montre femme chic",category:"Montres",price:60000,desc:"Une touche délicate et élégante.",img:"https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=700&q=80"},
+
+{id:7,name:"Sneakers urbaines",category:"Chaussures",price:85000,desc:"Confort et style pour tous les jours.",img:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80"},
+
+{id:8,name:"Chaussures élégantes",category:"Chaussures",price:95000,desc:"Pour vos sorties et occasions.",img:"https://images.unsplash.com/photo-1614252369475-531021837c4a?auto=format&fit=crop&w=700&q=80"},
+
+{id:9,name:"Sac à main moderne",category:"Accessoires",price:70000,desc:"Pratique et élégant.",img:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=700&q=80"},
+
+{id:10,name:"Lunettes tendance",category:"Accessoires",price:25000,desc:"Complétez votre tenue avec style.",img:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=700&q=80"},
+
+{id:11,name:"Chemise homme",category:"Vêtements",price:45000,desc:"Une pièce polyvalente et soignée.",img:"https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=700&q=80"},
+
+{id:12,name:"Robe élégante",category:"Vêtements",price:75000,desc:"Une silhouette élégante pour femme.",img:"https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&w=700&q=80"},
+
+{id:13,name:"T-shirt essentiel",category:"Vêtements",price:30000,desc:"Confortable et facile à assortir.",img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=80"},
+
+{id:14,name:"Sac à dos urbain",category:"Accessoires",price:60000,desc:"Pour le travail et les déplacements.",img:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=80"},
+
+{id:15,name:"Bracelet minimaliste",category:"Bracelets",price:12000,desc:"Un petit détail qui fait la différence.",img:"https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=700&q=80"},
+
+{id:16,name:"Baskets femme",category:"Chaussures",price:80000,desc:"Confortables et faciles à porter.",img:"https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=700&q=80"}
+
+];
+
+let activeFilter = "Tous";
+let cart = {};
+
+const money = n =>
+new Intl.NumberFormat("fr-FR").format(n) + " FBU";
+
+function setFilter(cat) {
+  activeFilter = cat;
+  renderFilters();
+  renderProducts();
+}
+
+function renderFilters() {
+  const cats = [
+    "Tous","Bracelets","Montres",
+    "Chaussures","Vêtements","Accessoires"
+  ];
+
+  document.getElementById("filters").innerHTML =
+  cats.map(c =>
+  `<button class="filter ${activeFilter===c?'active':''}"
+  onclick="setFilter('${c}')">${c}</button>`
+  ).join("");
+}
+
+function renderProducts() {
+
+  let list = productsData.filter(p =>
+    (activeFilter==="Tous" || p.category===activeFilter) &&
+    (`${p.name} ${p.category}`.toLowerCase()
+    .includes(document.getElementById("search").value.toLowerCase()))
+  );
+
+  const sort = document.getElementById("sort").value;
+
+  if(sort==="low") list.sort((a,b)=>a.price-b.price);
+  if(sort==="high") list.sort((a,b)=>b.price-a.price);
+
+  document.getElementById("products").innerHTML =
+  list.map(p => `
+  <article class="card">
+    <div class="photo">
+      <img src="${p.img}" alt="${p.name}" loading="lazy">
+    </div>
+
+    <div class="info">
+      <div class="type">${p.category}</div>
+      <div class="name">${p.name}</div>
+      <div class="desc">${p.desc}</div>
+
+      <div class="bottom">
+        <span class="price">${money(p.price)}</span>
+        <button class="add" onclick="addToCart(${p.id})">
+          Ajouter +
+        </button>
+      </div>
+    </div>
+  </article>
+  `).join("") || "<p>Aucun produit trouvé.</p>";
+}
+
+function addToCart(id) {
+  cart[id] = (cart[id] || 0) + 1;
+  updateCart();
+}
+
+function changeQty(id,delta) {
+  cart[id] = (cart[id] || 0) + delta;
+  if(cart[id]<=0) delete cart[id];
+  updateCart();
+}
+
+function updateCart() {
+
+  let entries = Object.entries(cart);
+
+  let count = entries.reduce(
+    (s,[id,q])=>s+q,0
+  );
+
+  let total = entries.reduce(
+    (s,[id,q])=>
+    s+productsData.find(p=>p.id==id).price*q,0
+  );
+
+  document.getElementById("count").textContent=count;
+  document.getElementById("total").textContent=money(total);
+
+  document.getElementById("cartItems").innerHTML =
+  entries.length ? entries.map(([id,q]) => {
+
+    let p = productsData.find(x=>x.id==id);
+
+    return `
+    <div class="cartLine">
+      <div>
+        <b>${p.name}</b><br>
+        ${money(p.price)} × ${q}
+      </div>
+
+      <div class="qty">
+        <button onclick="changeQty(${id},-1)">−</button>
+        ${q}
+        <button onclick="changeQty(${id},1)">+</button>
+      </div>
+    </div>
+    `;
+
+  }).join("") :
+  '<div class="empty">Votre panier est vide.</div>';
+}
+
+function openCart() {
+  document.getElementById("drawer").classList.add("show");
+  updateCart();
+}
+
+function closeCart() {
+  document.getElementById("drawer").classList.remove("show");
+}
+
+function checkout() {
+
+  let entries = Object.entries(cart);
+
+  if(!entries.length) {
+    alert("Votre panier est vide.");
+    return;
+  }
+
+  let total = 0;
+
+  let lines = entries.map(([id,q]) => {
+
+    let p = productsData.find(x=>x.id==id);
+
+    total += p.price*q;
+
+    return `- ${p.name} x${q} : ${money(p.price*q)}`;
+
+  });
+
+  let message =
+  "Bonjour BY RAPHAËL, je souhaite commander :\n" +
+  lines.join("\n") +
+  "\n\nTotal estimé : " + money(total) +
+  "\nMerci de confirmer la disponibilité et le prix.";
+
+  window.open(
+    "https://wa.me/" + whatsappNumber +
+    "?text=" + encodeURIComponent(message),
+    "_blank"
+  );
+}
+
+renderFilters();
+renderProducts();
+updateCart();
+
+</script>
+
+</body>
+</html>
